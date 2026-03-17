@@ -5,6 +5,8 @@ from abc import ABC, abstractmethod
 class Person(ABC):
     def __init__(self, name):
         self._name = name
+    def getname(self):
+        return self._name
     @abstractmethod
     def perform_action(self):
         pass
@@ -125,7 +127,7 @@ def save_librarians(librarians):
 
 def find_user(users, name):
     for user in users:
-        if user._name == name:
+        if user.getname() == name:
             return user
     return None
 
@@ -146,7 +148,7 @@ def main():
         name = input("Введите имя библиотекаря: ").strip()
         current_librarian = None
         for lib in librarians:
-            if lib._name == name:
+            if lib.getname() == name:
                 current_librarian = lib
                 break
         if not current_librarian:
@@ -179,7 +181,7 @@ def main():
             elif choice == "4":
                 if users:
                     for u in users:
-                        print(f"- {u._name}")
+                        print(f"- {u.getname()}")
                 else:
                     print("Нет пользователей.")
 
